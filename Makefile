@@ -34,5 +34,8 @@ enter-react:
 lint:
 	docker exec -it $(REACT_CONTAINER) npm run lint
 
+format:
+	docker exec -it $(REACT_CONTAINER) npm run format
+
 enter-fastapi:
 	docker exec -it $(FASTAPI_CONTAINER) sh
