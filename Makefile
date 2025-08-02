@@ -31,5 +31,8 @@ enter-postgresql:
 enter-react:
 	docker exec -it $(REACT_CONTAINER) sh
 
+lint:
+	docker exec -it $(REACT_CONTAINER) npm run lint
+
 enter-fastapi:
 	docker exec -it $(FASTAPI_CONTAINER) sh
