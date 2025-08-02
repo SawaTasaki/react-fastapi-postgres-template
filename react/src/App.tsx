@@ -8,10 +8,11 @@ function App() {
     username: '',
     text: ''
   })
+  const BACKEND_ORIGIN = import.meta.env.VITE_BACKEND_ORIGIN
 
   // 投稿一覧を取得
   const fetchPosts = async () => {
-    const res = await fetch('http://localhost:8000/posts')
+    const res = await fetch(`${BACKEND_ORIGIN}/posts`)
     const data = await res.json()
     setPosts(data)
   }
@@ -23,7 +24,7 @@ function App() {
   // 投稿フォームの送信
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await fetch('http://localhost:8000/posts', {
+    await fetch(`${BACKEND_ORIGIN}/posts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
