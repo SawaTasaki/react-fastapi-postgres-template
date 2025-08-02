@@ -8,6 +8,7 @@
 - Backend: FastAPI
 - DB: PostgreSQL
 - 開発環境: Docker Compose
+- コード品質ツール: ESLint + Prettier
 
 ## 🚀 起動方法
 
