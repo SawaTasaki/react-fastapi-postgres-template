@@ -10,7 +10,8 @@ services:
     volumes:
       - ./fastapi:/app
     depends_on:
-      - postgresql
+      postgresql:
+        condition: service_healthy
 
   react:
     build: ./react
@@ -33,6 +34,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./postgresql/init.sql:/docker-entrypoint-initdb.d/sqlinit.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data:
