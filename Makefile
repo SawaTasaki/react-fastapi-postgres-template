@@ -22,13 +22,13 @@ clean:
 	fi
 	docker system df
 
-enter-postgresql:
+postgresql:
 	docker exec -it $(POSTGRESQL_CONTAINER) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\l"
 	docker exec -it $(POSTGRESQL_CONTAINER) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "\dt"
 	docker exec -it $(POSTGRESQL_CONTAINER) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB) -c "SELECT * FROM post;"
 	docker exec -it $(POSTGRESQL_CONTAINER) psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)
 
-enter-react:
+react:
 	docker exec -it $(REACT_CONTAINER) sh
 
 lint:
@@ -37,5 +37,5 @@ lint:
 format:
 	docker exec -it $(REACT_CONTAINER) npm run format
 
-enter-fastapi:
+fastapi:
 	docker exec -it $(FASTAPI_CONTAINER) sh
